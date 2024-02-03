@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Fortune</title>
+    <!-- C0905795 Sagun Saluja Styling -->
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        text-align: center;
+        margin: 50px;
+        background-color: #3498db; /* Blue Theme */
+        color: #fff; /* White Text */
+      }
+
+      h1 {
+        color: #fff;
+      }
+
+      .fortune-container {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        margin: 20px auto;
+        text-align: left;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #2980b9; /* Darker Blue Button */
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Your Fortune</h1>
+    <!-- C0905795 Sagun Saluja Form -->
+    <form class="fortune-container">
+      <label for="job">Your Job:</label>
+      <input
+        type="text"
+        id="job"
+        placeholder="Enter your Job"
+        required
+      /><br />
+      <label for="children">Number of Children:</label>
+      <input
+        type="number"
+        id="children"
+        placeholder="Enter number of children"
+        min="0"
+        required
+      /><br />
+
+      <label for="partner">Partner Name:</label>
+      <input
+        type="text"
+        id="partner"
+        placeholder="Enter partner's name"
+        required
+      /><br />
+
+      <label for="location">Geographic Location:</label>
+      <input
+        type="text"
+        id="location"
+        placeholder="Enter geographic location"
+        required
+      /><br />
+
+      <button onclick="tellFortune()">Tell Fortune</button>
+    <!-- C0905795 Sagun Saluja Js function -->
+      <script>
+          function tellFortune() {
+          var name = document.getElementById("job").value;
+          var children = Math.max(0, document.getElementById("children").value);
+          var partner = document.getElementById("partner").value;
+          var location = document.getElementById("location").value;
+
+          if (name && children !== null && partner && location) {
+            var fortune =
+              "You will be a " +
+              name +
+              " in " +
+              location +
+              ", and married to " +
+              partner +
+              " with " +
+              children +
+              " kids.";
+            alert(fortune);
+          } else {
+            alert("Please fill in all required fields.");
+          }
+        }
+      </script>
+    </form>
+  </body>
+</html>
