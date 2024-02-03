@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- C0905795 Sagun Saluja Styling -->
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f4f4f4;
+      }
+
+      #game-container {
+        text-align: center;
+        padding: 20px;
+        border: 2px solid #3498db;
+        border-radius: 8px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        color: #3498db;
+      }
+
+      input {
+        padding: 10px;
+        margin: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      #resultMessage {
+        margin-top: 20px;
+        font-size: 18px;
+        color: #3498db;
+      }
+    </style>
+    <!-- C0905795 Sagun Saluja Title-->
+    <title>Guess the Number Game</title>
+  </head>
+  <body>
+    <!-- C0905795 Sagun Saluja Main Container-->
+    <div id="game-container">
+      <h2>Guess the Number Game</h2>
+      <p>Can you guess the number between 1 and 10?</p>
+      <input
+        type="number"
+        id="userGuess"
+        placeholder="Enter your guess"
+        oninput="clearMessage()"
+      />
+      <br />
+      <button onclick="checkGuess()">Check Guess</button>
+      <p id="resultMessage"></p>
+    </div>
+    <!-- C0905795 Sagun Saluja Scripts-->
+    <script>
+      function checkGuess() {
+        var targetNumber = Math.floor(Math.random() * 10) + 1;
+        var userGuess = parseInt(document.getElementById("userGuess").value);
+
+        if (!isNaN(userGuess)) {
+          if (userGuess === targetNumber) {
+            document.getElementById("resultMessage").innerText =
+              "🎉 Good work! You guessed the correct number!";
+            document.getElementById("resultMessage").style.color = "#2ecc71";
+          } else {
+            document.getElementById(
+              "resultMessage"
+            ).innerText = `Oops! The correct number was ${targetNumber}. Try again!`;
+            document.getElementById("resultMessage").style.color = "#e74c3c";
+          }
+        } else {
+          document.getElementById("resultMessage").innerText =
+            "Please enter a valid number.";
+          document.getElementById("resultMessage").style.color = "#e74c3c";
+        }
+      }
+    //   C0905795 Sagun Saluja clear function
+      function clearMessage() {
+        document.getElementById("resultMessage").innerText = "";
+      }
+    </script>
+  </body>
+</html>
