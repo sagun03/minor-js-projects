@@ -3,22 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Puppy Age Calculator</title>
+    <title>Snack Supply Calculator</title>
     <!-- C0905795 Sagun Saluja Styling -->
     <style>
       body {
         font-family: "Arial", sans-serif;
         text-align: center;
         margin: 50px;
-        background-color: #3498db; 
-        color: #fff; 
+        background-color: #3498db;
+        color: #fff;
       }
 
       h1 {
         color: #fff;
       }
 
-      .puppy-container {
+      .supply-container {
         background-color: #fff;
         border-radius: 10px;
         padding: 20px;
@@ -46,54 +46,59 @@
         padding: 10px 20px;
         font-size: 16px;
         cursor: pointer;
-        background-color: #2980b9; 
+        background-color: #2980b9;
         color: #fff;
         border: none;
         border-radius: 5px;
       }
-      #dogAgeResult {
+      #supplyResult {
         color: black;
       }
     </style>
   </head>
   <body>
-    <h1>Puppy Age Calculator</h1>
+    <h1>Snack Supply Calculator</h1>
 
-    <!-- C0905795 Sagun Saluja  -->
-    <div class="puppy-container">
-      <label for="puppyAge">Puppy's Age:</label>
+    <!-- Snack Supply Calculator Form -->
+    <div class="supply-container">
+      <label for="age">Your Age:</label>
       <input
         type="number"
-        id="puppyAge"
-        placeholder="Enter puppy's age"
+        id="age"
+        placeholder="Enter your age"
         min="0"
         required
       /><br />
 
-      <label for="conversionRate"
-        >Conversion Rate (human years to dog years):</label
-      >
+      <label for="amountPerDay">Amount Per Day (in units):</label>
       <input
         type="number"
-        id="conversionRate"
-        placeholder="Enter conversion rate"
-        value="7"
+        id="amountPerDay"
+        placeholder="Enter amount per day"
+        min="0"
+        step="0.01"
         required
       /><br />
 
-      <button onclick="calculateDogAge()">Calculate Dog Age</button>
-      <p id="dogAgeResult"></p>
+      <button onclick="calculateSupply()">Calculate Snack Supply</button>
+      <p id="supplyResult"></p>
     </div>
     <!-- C0905795 Sagun Saluja Js function -->
     <script>
-      function calculateDogAge() {
-        var puppyAge = document.getElementById("puppyAge").value;
-        var conversionRate = document.getElementById("conversionRate").value;
+      function calculateSupply() {
+        var age = document.getElementById("age").value;
+        var amountPerDay = document.getElementById("amountPerDay").value;
 
-        if (puppyAge !== "" && conversionRate !== "") {
-          var dogAge = puppyAge * conversionRate;
-          document.getElementById("dogAgeResult").innerText =
-            "Your doggie is " + dogAge + " years old in dog years!";
+        if (age !== "" && amountPerDay !== "") {
+          var maxAge = 80; // Constant max age
+          var totalSupply = Math.round((maxAge - age) * 365 * amountPerDay);
+
+          document.getElementById("supplyResult").innerText =
+            "You will need " +
+            totalSupply +
+            " units to last you until the ripe old age of " +
+            maxAge +
+            ".";
         } else {
           alert("Please fill in all required fields.");
         }
